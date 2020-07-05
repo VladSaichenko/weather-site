@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% block mainpage %}
+<article class="media content-section">
+    <div class="container main_page">
+        <div class="media-body">
+            <h2>Вы действительно хотите удалить этот пост?</h2>
+            <div class="article-metadata">
+                <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" width="50"
+                    alt="Фото профиля">&nbsp
+                <a href="{% url 'userpost_list' object.author.username %}" class="mr-2">{{ object.author }}</a>
+                <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <hr style="margin-top: 0.5em; margin-bottom: 0.5em;">
+            <h3 class="article-title"><a href="{% url 'post_details' post.id %}"
+                    class="text-decoration-none">{{ post.title }}</a></h3>
+            <p class="article-content">{{ post.content }}</p>
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <hr style="margin-top: 0.5em; margin-bottom: 0.5em;">
+                <a class="btn btn-outline-secondary" href="{% url 'post_details' post.id %}">Отмена</a>&nbsp
+                <button class="btn btn-outline-danger" type="submit">Да, Удалить "{{ post.title }}"</button>
+            </div>
+        </form>
+    </div>
+</article>
+{% endblock %}

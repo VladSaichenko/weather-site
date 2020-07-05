@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+
+{% block mainpage %}
+<div class="container main_page">
+    <h1>Все посты пользователей ({{ page_obj.paginator.count}})</h1>
+    <p><a href="{% url 'post_create' %}">Написать пост</a></p>
+    {% for post in posts %}
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <p></p>
+                <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" width="50" height="50"
+                    alt="Фото профиля">&nbsp
+                <a href="{% url 'userpost_list' post.author.username %}" class="mr-2">{{ post.author }}</a>
+                <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <hr style="margin-top: 0.5em; margin-bottom: 0.5em;">
+            <h4 class="article-title"><a href="{% url 'post_details' post.id %}"
+                    class="text-decoration-none">{{ post.title }}</a></h4>
+            <p class="article-content">{{ post.content }}</p>
+        </div>
+    </article>
+    {% endfor %}
+    <br>
+
+    {% if is_paginated %}
+
+    {% if page_obj.has_previous %}
+    <a class="btn btn-outline-info" href="?page={{page_obj.previous_page_number}}">Пред.</a>
+    {% else %}
+    <button type="button" class="btn btn-outline-info" disabled>Пред.</button>
+    {% endif %}
+
+    {% for page in page_obj.paginator.page_range %}
+    {% if page_obj.number == page %}
+    <a class="btn btn-info" href="?page={{page}}">{{ page }}</a>
+    {% else %}
+    <a class="btn btn-outline-info" href="?page={{page}}">{{ page }}</a>
+    {% endif %}
+    {% endfor %}
+
+
+    {% if page_obj.has_next %}
+    <a class="btn btn-outline-info" href="?page={{ page_obj.next_page_number }}">След.</a>
+    {% else %}
+    <button type="button" class="btn btn-outline-info" disabled>След.</button>
+    {% endif %}
+
+    {% endif %}
+    <br><br><br>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+
+{% block mainpage %}
+<br>
+<div class="container main_page">
+    <h3 align="center">Погода в каком городе вас интересует?</h3>
+    <form action="{% url 'index' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" name="citynameinput" id="form_size" class="form-control" placeholder="Название города"
+                maxlength="30">
+            <div class="alert alert-primary">
+                <p class="text-center">Не удалось найти город</p>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

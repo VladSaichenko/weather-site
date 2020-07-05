@@ -1,0 +1,77 @@
+body {
+  padding: 1px;
+}
+
+.main_content {
+  padding: 10px;
+  margin: 0 auto;
+  max-width: 550px;
+  max-height: 300px;
+}
+
+#form_size {
+  width: 518px;
+  padding: 10px;
+  position: relative;
+  bottom: -5px;
+}
+
+.form_set {
+  margin: 0 auto;
+  bottom: 10px;
+}
+
+.project_set {
+  max-width: 550px;
+  max-height: 300px;
+  padding: 15px;
+}
+
+.result_body {
+  max-width: 500px;
+  min-height: 600px;
+  margin: 0 auto;
+}
+
+.result_header {
+  margin: 0 auto;
+  max-width: 450px;
+  padding: 5px;
+}
+
+.result_temp {
+  float: left;
+  max-width: 215px;
+  max-height: 140px;
+  position: relative;
+  top: 7px;
+  left: 5px;
+}
+
+.result_info {
+  float: left;
+  min-width: 270px;
+  max-height: 139px;
+  position: relative;
+  top: 7px;
+  left: 40px;
+  padding: 10px;
+}
+
+.result_a {
+  padding: 10px;
+}
+
+#footer {
+  position: relative;
+  left: 190px;
+}
+
+#par_line {
+  line-height: 0.5;
+}
+
+#error_alert {
+  margin: 0 auto;
+  width: 225px;
+}

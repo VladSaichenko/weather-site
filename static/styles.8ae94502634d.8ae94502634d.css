@@ -1,0 +1,22 @@
+.results_page {
+    width: 500px; 
+}
+
+.main_page {
+    width: 2550px;
+    border: 1px solid;
+}
+
+.weather {
+    float: left;
+}
+
+.extra_info {
+    float: right;
+    line-height: 0.9;
+}
+
+.button {
+    position: relative;
+    left: 250px;
+}

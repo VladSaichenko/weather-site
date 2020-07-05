@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block mainpage %}
+<article class="media content-section">
+    <div class="container main_page">
+        <div class="media-body">
+            <div class="article-metadata">
+                <p>{{ users. }}</p>
+                <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" width="50"
+                    alt="Фото профиля">&nbsp
+                <a href="{% url 'userpost_list' object.author.username %}" class="mr-2">{{ object.author }}</a>
+                <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <hr style="margin-top: 0.5em; margin-bottom: 0.5em;">
+            <h3 class="article-title"><a href="{% url 'post_details' post.id %}"
+                    class="text-decoration-none">{{ post.title }}</a></h3>
+            <p class="article-content">{{ post.content }}</p>
+            <hr style="margin-top: 0.5em; margin-bottom: 0.5em;">
+            {% if object.author == user %}
+            <small class="text-muted">
+                <a href="{% url 'post_delete' post.id %}">Удалить</a>&nbsp
+                <a href="{% url 'post_update' post.id %}">Редактировать</a>
+            </small>
+            {% endif %}
+        </div>
+    </div>
+</article>
+{% endblock %}

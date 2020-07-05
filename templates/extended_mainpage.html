@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% block mainpage %}
+<br>
+<div class="container main_page">
+    <h3 align="center">Погода в каком городе вас интересует?</h3>
+    <form action="{% url 'index' %}" method="post">
+        <div class="form-group">
+            {% csrf_token %}
+            <input type="text" name="citynameinput" id="form_size" class="form-control" placeholder="Название города"
+                maxlength="30">
+        </div>
+    </form>
+</div>
+<div class="container main_page">
+    <small class="text-muted">Последние два опубликованных поста</small>
+    <br><br>
+    {% for post in posts %}
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" width="50" height="50"
+                    alt="Фото профиля">&nbsp
+                <a href="{% url 'userpost_list' post.author.username %}" class="mr-2">{{ post.author }}</a>
+                <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <hr style="margin-top: 0.5em; margin-bottom: 0.5em;">
+            <h4 class="article-title"><a href="{% url 'post_details' post.id %}"
+                    class="text-decoration-none">{{ post.title }}</a></h4>
+            <p class="article-content">{{ post.content }}</p>
+        </div>
+    </article>
+    {% endfor %}
+    <br>
+    <p><a class="btn btn-outline-info" href="{% url 'postpage_list' %}">Смотреть все посты пользователей</a></p>
+    <br>
+</div>
+{% endblock %}

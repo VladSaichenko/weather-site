@@ -1,0 +1,6 @@
+.idea/
+WeatherApp/__pycache__/
+weather/__pycache__/
+WeatherApp/venv/
+.bash_profile
+.vscode/

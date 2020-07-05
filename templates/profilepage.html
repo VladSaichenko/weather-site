@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+
+
+{% block mainpage %}
+<div class="container main_page">
+  <div class="media">
+    <img src="{{ user.profile.image.url }}" alt="Фотография профиля"
+      class="rounded-circle account-img">&nbsp&nbsp&nbsp&nbsp
+    <div class="media-body">
+      <h1 class="account-heading"><strong>{{ user.username }}</strong></h1>
+      <h4 class="text-secondary"><i>{{ user.first_name }} {{ user.last_name }}</i></h4>
+      <a href="{% url 'profile/editing' %}" class="text-decoration-none">
+        <p>Редактировать профиль</p>
+      </a>
+      <a href="{% url 'post_create' %}" class="btn btn-info">Написать новый пост</a>
+    </div>
+
+  </div>
+</div>
+{% block profilesettings %}
+{% endblock %}
+<br>
+<div class="container main_page">
+  <h1>Мои посты</h1>
+  {% if posts %}
+  {% for post in posts %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <p></p>
+        <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" width="50" height="50"
+          alt="Фото профиля">&nbsp
+        <a href="{% url 'userpost_list' post.author.username %}" class="mr-2">{{ post.author }}</a>
+        <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+      </div>
+      <hr style="margin-top: 0.5em; margin-bottom: 0.5em;">
+      <h4 class="article-title"><a href="{% url 'post_details' post.id %}"
+          class="text-decoration-none">{{ post.title }}</a></h4>
+      <p class="article-content">{{ post.content }}</p>
+    <br><br><br>
+    </div>
+  </article>
+  {% endfor %}
+  {% else %}
+  <br>
+  <h3 class="text-secondary"><i>Здесь пока ничего нет</i></h3>
+  {% endif %}
+  {% endblock %}

@@ -1,0 +1,29 @@
+.results_page {
+    width: 500px;
+}
+
+.main_page {
+    width: 550px;
+}
+
+.main_page2 {
+    width: 500px;
+}
+
+.weather {
+    float: left;
+}
+
+.extra_info {
+    float: right;
+    line-height: 0.9;
+}
+
+.button {
+    position: relative;
+    left: 250px;
+}
+
+.img-line {
+    display: inline-block;
+}

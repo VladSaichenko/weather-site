@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block mainpage %}
+<article>
+    <div class="container main_page2">
+        <div class="">
+            <h2 align="center">Сейчас в городе {{ info.name }}</h2>
+        </div>
+
+        <div class="weather">
+            <h1 class="display-1">{{ info.temp }}°C</h1>
+        </div>
+
+        <div class="extra_info">
+            <p class="font-weight-lighter" id="par_line">Скорость ветра: {{ info.wind_speed }} м/c</p>
+            <p class="font-weight-lighter" id="par_line">Давление: {{ info.pressure }} гПа</p>
+            <p class="font-weight-lighter" id="par_line">Минимальная температура: {{ info.temp_min }}°C</p>
+            <p class="font-weight-lighter" id="par_line">Максималья температура: {{ info.temp_max }}°C</p>
+        </div>
+        <div class="button">
+            <a href="{% url 'mainpage' %}" class="btn btn-info" role="button" aria-pressed="true">Назад</a>
+        </div>
+    </div>
+    <br>
+    
+        {% for i in picture %}
+        <div style="display: inline-block;">
+            <img src="{{ i }}">
+            {% endfor %}
+        </div>
+    </div>
+</article>
+{% endblock %}
